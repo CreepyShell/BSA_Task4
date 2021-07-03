@@ -3,9 +3,124 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LINQ.DataAccess.Migrations
 {
-    public partial class Validation : Migration
+    public partial class Valid : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.UpdateData(
+                table: "Projects",
+                keyColumn: "Id",
+                keyValue: 1,
+                column: "CreatedAt",
+                value: new DateTime(2021, 7, 3, 21, 56, 54, 33, DateTimeKind.Local).AddTicks(3829));
+
+            migrationBuilder.UpdateData(
+                table: "Projects",
+                keyColumn: "Id",
+                keyValue: 2,
+                column: "CreatedAt",
+                value: new DateTime(2021, 7, 3, 21, 56, 54, 33, DateTimeKind.Local).AddTicks(4426));
+
+            migrationBuilder.UpdateData(
+                table: "Projects",
+                keyColumn: "Id",
+                keyValue: 3,
+                column: "CreatedAt",
+                value: new DateTime(2021, 7, 3, 21, 56, 54, 33, DateTimeKind.Local).AddTicks(4450));
+
+            migrationBuilder.UpdateData(
+                table: "Tasks",
+                keyColumn: "Id",
+                keyValue: 1,
+                column: "CreatedAt",
+                value: new DateTime(2021, 7, 3, 21, 56, 54, 33, DateTimeKind.Local).AddTicks(6429));
+
+            migrationBuilder.UpdateData(
+                table: "Tasks",
+                keyColumn: "Id",
+                keyValue: 2,
+                column: "CreatedAt",
+                value: new DateTime(2021, 7, 3, 21, 56, 54, 33, DateTimeKind.Local).AddTicks(7043));
+
+            migrationBuilder.UpdateData(
+                table: "Tasks",
+                keyColumn: "Id",
+                keyValue: 3,
+                column: "CreatedAt",
+                value: new DateTime(2021, 7, 3, 21, 56, 54, 33, DateTimeKind.Local).AddTicks(7065));
+
+            migrationBuilder.UpdateData(
+                table: "Tasks",
+                keyColumn: "Id",
+                keyValue: 4,
+                column: "CreatedAt",
+                value: new DateTime(2021, 7, 3, 21, 56, 54, 33, DateTimeKind.Local).AddTicks(7073));
+
+            migrationBuilder.UpdateData(
+                table: "Teams",
+                keyColumn: "Id",
+                keyValue: 1,
+                column: "CreatedAt",
+                value: new DateTime(2021, 7, 3, 21, 56, 54, 23, DateTimeKind.Local).AddTicks(2723));
+
+            migrationBuilder.UpdateData(
+                table: "Teams",
+                keyColumn: "Id",
+                keyValue: 2,
+                column: "CreatedAt",
+                value: new DateTime(2021, 7, 3, 21, 56, 54, 32, DateTimeKind.Local).AddTicks(9091));
+
+            migrationBuilder.UpdateData(
+                table: "Teams",
+                keyColumn: "Id",
+                keyValue: 3,
+                column: "CreatedAt",
+                value: new DateTime(2021, 7, 3, 21, 56, 54, 32, DateTimeKind.Local).AddTicks(9181));
+
+            migrationBuilder.UpdateData(
+                table: "Users",
+                keyColumn: "Id",
+                keyValue: 1,
+                column: "RegisteredAt",
+                value: new DateTime(2021, 7, 3, 21, 56, 54, 33, DateTimeKind.Local).AddTicks(1273));
+
+            migrationBuilder.UpdateData(
+                table: "Users",
+                keyColumn: "Id",
+                keyValue: 2,
+                column: "RegisteredAt",
+                value: new DateTime(2021, 7, 3, 21, 56, 54, 33, DateTimeKind.Local).AddTicks(1947));
+
+            migrationBuilder.UpdateData(
+                table: "Users",
+                keyColumn: "Id",
+                keyValue: 3,
+                column: "RegisteredAt",
+                value: new DateTime(2021, 7, 3, 21, 56, 54, 33, DateTimeKind.Local).AddTicks(1974));
+
+            migrationBuilder.UpdateData(
+                table: "Users",
+                keyColumn: "Id",
+                keyValue: 4,
+                column: "RegisteredAt",
+                value: new DateTime(2021, 7, 3, 21, 56, 54, 33, DateTimeKind.Local).AddTicks(1981));
+
+            migrationBuilder.UpdateData(
+                table: "Users",
+                keyColumn: "Id",
+                keyValue: 5,
+                column: "RegisteredAt",
+                value: new DateTime(2021, 7, 3, 21, 56, 54, 33, DateTimeKind.Local).AddTicks(1990));
+
+            migrationBuilder.UpdateData(
+                table: "Users",
+                keyColumn: "Id",
+                keyValue: 6,
+                column: "RegisteredAt",
+                value: new DateTime(2021, 7, 3, 21, 56, 54, 33, DateTimeKind.Local).AddTicks(2012));
+        }
+
+        protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.UpdateData(
                 table: "Projects",
@@ -118,121 +233,6 @@ namespace LINQ.DataAccess.Migrations
                 keyValue: 6,
                 column: "RegisteredAt",
                 value: new DateTime(2021, 7, 3, 19, 24, 10, 248, DateTimeKind.Local).AddTicks(7076));
-        }
-
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.UpdateData(
-                table: "Projects",
-                keyColumn: "Id",
-                keyValue: 1,
-                column: "CreatedAt",
-                value: new DateTime(2021, 7, 3, 19, 18, 4, 787, DateTimeKind.Local).AddTicks(5439));
-
-            migrationBuilder.UpdateData(
-                table: "Projects",
-                keyColumn: "Id",
-                keyValue: 2,
-                column: "CreatedAt",
-                value: new DateTime(2021, 7, 3, 19, 18, 4, 787, DateTimeKind.Local).AddTicks(5779));
-
-            migrationBuilder.UpdateData(
-                table: "Projects",
-                keyColumn: "Id",
-                keyValue: 3,
-                column: "CreatedAt",
-                value: new DateTime(2021, 7, 3, 19, 18, 4, 787, DateTimeKind.Local).AddTicks(5791));
-
-            migrationBuilder.UpdateData(
-                table: "Tasks",
-                keyColumn: "Id",
-                keyValue: 1,
-                column: "CreatedAt",
-                value: new DateTime(2021, 7, 3, 19, 18, 4, 787, DateTimeKind.Local).AddTicks(6747));
-
-            migrationBuilder.UpdateData(
-                table: "Tasks",
-                keyColumn: "Id",
-                keyValue: 2,
-                column: "CreatedAt",
-                value: new DateTime(2021, 7, 3, 19, 18, 4, 787, DateTimeKind.Local).AddTicks(7074));
-
-            migrationBuilder.UpdateData(
-                table: "Tasks",
-                keyColumn: "Id",
-                keyValue: 3,
-                column: "CreatedAt",
-                value: new DateTime(2021, 7, 3, 19, 18, 4, 787, DateTimeKind.Local).AddTicks(7086));
-
-            migrationBuilder.UpdateData(
-                table: "Tasks",
-                keyColumn: "Id",
-                keyValue: 4,
-                column: "CreatedAt",
-                value: new DateTime(2021, 7, 3, 19, 18, 4, 787, DateTimeKind.Local).AddTicks(7090));
-
-            migrationBuilder.UpdateData(
-                table: "Teams",
-                keyColumn: "Id",
-                keyValue: 1,
-                column: "CreatedAt",
-                value: new DateTime(2021, 7, 3, 19, 18, 4, 781, DateTimeKind.Local).AddTicks(9007));
-
-            migrationBuilder.UpdateData(
-                table: "Teams",
-                keyColumn: "Id",
-                keyValue: 2,
-                column: "CreatedAt",
-                value: new DateTime(2021, 7, 3, 19, 18, 4, 787, DateTimeKind.Local).AddTicks(2751));
-
-            migrationBuilder.UpdateData(
-                table: "Teams",
-                keyColumn: "Id",
-                keyValue: 3,
-                column: "CreatedAt",
-                value: new DateTime(2021, 7, 3, 19, 18, 4, 787, DateTimeKind.Local).AddTicks(2802));
-
-            migrationBuilder.UpdateData(
-                table: "Users",
-                keyColumn: "Id",
-                keyValue: 1,
-                column: "RegisteredAt",
-                value: new DateTime(2021, 7, 3, 19, 18, 4, 787, DateTimeKind.Local).AddTicks(3986));
-
-            migrationBuilder.UpdateData(
-                table: "Users",
-                keyColumn: "Id",
-                keyValue: 2,
-                column: "RegisteredAt",
-                value: new DateTime(2021, 7, 3, 19, 18, 4, 787, DateTimeKind.Local).AddTicks(4368));
-
-            migrationBuilder.UpdateData(
-                table: "Users",
-                keyColumn: "Id",
-                keyValue: 3,
-                column: "RegisteredAt",
-                value: new DateTime(2021, 7, 3, 19, 18, 4, 787, DateTimeKind.Local).AddTicks(4381));
-
-            migrationBuilder.UpdateData(
-                table: "Users",
-                keyColumn: "Id",
-                keyValue: 4,
-                column: "RegisteredAt",
-                value: new DateTime(2021, 7, 3, 19, 18, 4, 787, DateTimeKind.Local).AddTicks(4385));
-
-            migrationBuilder.UpdateData(
-                table: "Users",
-                keyColumn: "Id",
-                keyValue: 5,
-                column: "RegisteredAt",
-                value: new DateTime(2021, 7, 3, 19, 18, 4, 787, DateTimeKind.Local).AddTicks(4388));
-
-            migrationBuilder.UpdateData(
-                table: "Users",
-                keyColumn: "Id",
-                keyValue: 6,
-                column: "RegisteredAt",
-                value: new DateTime(2021, 7, 3, 19, 18, 4, 787, DateTimeKind.Local).AddTicks(4396));
         }
     }
 }

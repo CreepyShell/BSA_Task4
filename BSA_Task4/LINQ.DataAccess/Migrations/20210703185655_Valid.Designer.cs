@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LINQ.DataAccess.Migrations
 {
     [DbContext(typeof(LINQDbContext))]
-    [Migration("20210703162410_Validation")]
-    partial class Validation
+    [Migration("20210703185655_Valid")]
+    partial class Valid
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -54,7 +54,7 @@ namespace LINQ.DataAccess.Migrations
                         {
                             Id = 1,
                             AuthorId = 1,
-                            CreatedAt = new DateTime(2021, 7, 3, 19, 24, 10, 248, DateTimeKind.Local).AddTicks(8109),
+                            CreatedAt = new DateTime(2021, 7, 3, 21, 56, 54, 33, DateTimeKind.Local).AddTicks(3829),
                             Name = "Stroika",
                             TeamId = 1
                         },
@@ -62,7 +62,7 @@ namespace LINQ.DataAccess.Migrations
                         {
                             Id = 2,
                             AuthorId = 3,
-                            CreatedAt = new DateTime(2021, 7, 3, 19, 24, 10, 248, DateTimeKind.Local).AddTicks(8450),
+                            CreatedAt = new DateTime(2021, 7, 3, 21, 56, 54, 33, DateTimeKind.Local).AddTicks(4426),
                             Name = "Zavod",
                             TeamId = 2
                         },
@@ -70,7 +70,7 @@ namespace LINQ.DataAccess.Migrations
                         {
                             Id = 3,
                             AuthorId = 3,
-                            CreatedAt = new DateTime(2021, 7, 3, 19, 24, 10, 248, DateTimeKind.Local).AddTicks(8462),
+                            CreatedAt = new DateTime(2021, 7, 3, 21, 56, 54, 33, DateTimeKind.Local).AddTicks(4450),
                             Name = "Doroga",
                             TeamId = 3
                         });
@@ -108,7 +108,7 @@ namespace LINQ.DataAccess.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2021, 7, 3, 19, 24, 10, 248, DateTimeKind.Local).AddTicks(9390),
+                            CreatedAt = new DateTime(2021, 7, 3, 21, 56, 54, 33, DateTimeKind.Local).AddTicks(6429),
                             Name = "Chinit dorogu",
                             PerformerId = 6,
                             ProjectId = 3
@@ -116,7 +116,7 @@ namespace LINQ.DataAccess.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2021, 7, 3, 19, 24, 10, 248, DateTimeKind.Local).AddTicks(9721),
+                            CreatedAt = new DateTime(2021, 7, 3, 21, 56, 54, 33, DateTimeKind.Local).AddTicks(7043),
                             Name = "Stroit dorogu",
                             PerformerId = 6,
                             ProjectId = 3
@@ -124,7 +124,7 @@ namespace LINQ.DataAccess.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2021, 7, 3, 19, 24, 10, 248, DateTimeKind.Local).AddTicks(9732),
+                            CreatedAt = new DateTime(2021, 7, 3, 21, 56, 54, 33, DateTimeKind.Local).AddTicks(7065),
                             Name = "Rabotat na zavode",
                             PerformerId = 4,
                             ProjectId = 2
@@ -132,7 +132,7 @@ namespace LINQ.DataAccess.Migrations
                         new
                         {
                             Id = 4,
-                            CreatedAt = new DateTime(2021, 7, 3, 19, 24, 10, 248, DateTimeKind.Local).AddTicks(9736),
+                            CreatedAt = new DateTime(2021, 7, 3, 21, 56, 54, 33, DateTimeKind.Local).AddTicks(7073),
                             Name = "Stroit doma",
                             PerformerId = 4,
                             ProjectId = 1
@@ -161,19 +161,19 @@ namespace LINQ.DataAccess.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2021, 7, 3, 19, 24, 10, 242, DateTimeKind.Local).AddTicks(6952),
+                            CreatedAt = new DateTime(2021, 7, 3, 21, 56, 54, 23, DateTimeKind.Local).AddTicks(2723),
                             Name = "Bavarija"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2021, 7, 3, 19, 24, 10, 248, DateTimeKind.Local).AddTicks(5150),
+                            CreatedAt = new DateTime(2021, 7, 3, 21, 56, 54, 32, DateTimeKind.Local).AddTicks(9091),
                             Name = "Stroiteli"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2021, 7, 3, 19, 24, 10, 248, DateTimeKind.Local).AddTicks(5227),
+                            CreatedAt = new DateTime(2021, 7, 3, 21, 56, 54, 32, DateTimeKind.Local).AddTicks(9181),
                             Name = "Svarihciki"
                         });
                 });
@@ -206,42 +206,42 @@ namespace LINQ.DataAccess.Migrations
                         {
                             Id = 1,
                             Name = "Dave",
-                            RegisteredAt = new DateTime(2021, 7, 3, 19, 24, 10, 248, DateTimeKind.Local).AddTicks(6644),
+                            RegisteredAt = new DateTime(2021, 7, 3, 21, 56, 54, 33, DateTimeKind.Local).AddTicks(1273),
                             TeamId = 1
                         },
                         new
                         {
                             Id = 2,
                             Name = "Cristian",
-                            RegisteredAt = new DateTime(2021, 7, 3, 19, 24, 10, 248, DateTimeKind.Local).AddTicks(7047),
+                            RegisteredAt = new DateTime(2021, 7, 3, 21, 56, 54, 33, DateTimeKind.Local).AddTicks(1947),
                             TeamId = 2
                         },
                         new
                         {
                             Id = 3,
                             Name = "Ronald",
-                            RegisteredAt = new DateTime(2021, 7, 3, 19, 24, 10, 248, DateTimeKind.Local).AddTicks(7060),
+                            RegisteredAt = new DateTime(2021, 7, 3, 21, 56, 54, 33, DateTimeKind.Local).AddTicks(1974),
                             TeamId = 2
                         },
                         new
                         {
                             Id = 4,
                             Name = "Anna",
-                            RegisteredAt = new DateTime(2021, 7, 3, 19, 24, 10, 248, DateTimeKind.Local).AddTicks(7064),
+                            RegisteredAt = new DateTime(2021, 7, 3, 21, 56, 54, 33, DateTimeKind.Local).AddTicks(1981),
                             TeamId = 3
                         },
                         new
                         {
                             Id = 5,
                             Name = "Steve",
-                            RegisteredAt = new DateTime(2021, 7, 3, 19, 24, 10, 248, DateTimeKind.Local).AddTicks(7068),
+                            RegisteredAt = new DateTime(2021, 7, 3, 21, 56, 54, 33, DateTimeKind.Local).AddTicks(1990),
                             TeamId = 3
                         },
                         new
                         {
                             Id = 6,
                             Name = "Roshar",
-                            RegisteredAt = new DateTime(2021, 7, 3, 19, 24, 10, 248, DateTimeKind.Local).AddTicks(7076),
+                            RegisteredAt = new DateTime(2021, 7, 3, 21, 56, 54, 33, DateTimeKind.Local).AddTicks(2012),
                             TeamId = 3
                         });
                 });
