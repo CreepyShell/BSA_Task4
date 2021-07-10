@@ -1,9 +1,9 @@
 ﻿using LINQ.BL.Services;
 using LINQ.Common.DTOModels;
+using LINQ.Common.DTOModels.UsersDTO;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 
@@ -53,7 +53,7 @@ namespace LINQ.WebAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, [FromBody] UserDTO newUser)
+        public async Task<IActionResult> Put(int id, [FromBody] UpdatedUserDTO newUser)
         {
             try
             {

@@ -1,5 +1,6 @@
 ﻿using LINQ.BL.Services;
 using LINQ.Common.DTOModels;
+using LINQ.Common.DTOModels.TeamsDTO;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -51,7 +52,7 @@ namespace LINQ.WebAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, [FromBody] TeamDTO newTeam)
+        public async Task<IActionResult> Put(int id, [FromBody] UpdatedTeamDTO newTeam)
         {
             try
             {

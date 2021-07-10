@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using LINQ.Common.DTOModels;
+using LINQ.Common.DTOModels.TeamsDTO;
 using LINQ.DataAccess;
 using LINQ.DataAccess.Models;
 using Microsoft.EntityFrameworkCore;
@@ -36,13 +37,16 @@ namespace LINQ.BL.Services
             await _context.SaveChangesAsync();
         }
 
-        public async System.Threading.Tasks.Task Update(TeamDTO newtoject, int id)
+        public async System.Threading.Tasks.Task Update(UpdatedTeamDTO newTeam, int id)
         {
-            var Team = _mapper.Map<Team>(newtoject);
             if (!IsExistElementById(id))
-                throw new System.InvalidOperationException("toject with this id is already exist");
+                throw new System.InvalidOperationException("user with this id don`t exist");
+
             var update = _context.Teams.First(t => t.Id == id);
-            update = Team;
+            if(newTeam.NewName!=null)
+                update.Name = newTeam.NewName;
+
+
             _context.Teams.Update(update);
             await _context.SaveChangesAsync();
         }

@@ -1,12 +1,10 @@
 ﻿using LINQ.BL.Services;
 using LINQ.Common.DTOModels;
+using LINQ.Common.DTOModels.TasksDTO;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-
-// For more information on enabling Web API for empty Tasks, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace LINQ.WebAPI.Controllers
 {
@@ -14,7 +12,7 @@ namespace LINQ.WebAPI.Controllers
     [ApiController]
     public class TasksController : ControllerBase
     {
-        private TaskService _service;
+        readonly private TaskService _service;
         public TasksController(TaskService service)
         {
             _service = service;
@@ -38,6 +36,19 @@ namespace LINQ.WebAPI.Controllers
                 return NotFound(ex.Message);
             }
         }
+        [HttpGet]
+        [Route("unexecuted/{userId}")]
+        public async Task<ActionResult<IEnumerable<TaskDTO>>> GetUnexecutedTasks(int userId)
+        {
+            try
+            {
+                return Ok(await _service.GetUnexecutedTasks(userId));
+            }
+            catch(InvalidOperationException ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
 
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] TaskDTO task)
@@ -54,7 +65,7 @@ namespace LINQ.WebAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, [FromBody] TaskDTO newTask)
+        public async Task<IActionResult> Put(int id, [FromBody] UpdatedTaskDTO newTask)
         {
             try
             {

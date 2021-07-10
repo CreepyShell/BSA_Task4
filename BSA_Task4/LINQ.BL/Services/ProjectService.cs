@@ -11,7 +11,7 @@ namespace LINQ.BL.Services
 {
     public class ProjectService : BaseService
     {
-        public ProjectService(IMapper mapper, LINQDbContext context):base(context, mapper)
+        public ProjectService(IMapper mapper, LINQDbContext context) : base(context, mapper)
         {
         }
         public async Task<IEnumerable<ProjectDTO>> Read()
@@ -36,13 +36,16 @@ namespace LINQ.BL.Services
            await _context.SaveChangesAsync();
         }
 
-        public async System.Threading.Tasks.Task Update(ProjectDTO newProject, int id)
+        public async System.Threading.Tasks.Task Update(UpdatedProjectDTO newProject, int id)
         {
-            var project = _mapper.Map<Project>(newProject);
             if (!IsExistElementById(id)) 
                 throw new System.InvalidOperationException("project with this id is already exist");
             var update = _context.Projects.First(pr => pr.Id == id);
-            update = project;
+
+            update.Description = newProject.NewDescription;
+            if (newProject.NewDedline != null)
+                update.Deadline = newProject.NewDedline.Value;
+
             _context.Projects.Update(update);
             await _context.SaveChangesAsync();
         }

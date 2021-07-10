@@ -4,14 +4,16 @@ using LINQ.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LINQ.DataAccess.Migrations
 {
     [DbContext(typeof(LINQDbContext))]
-    partial class LINQDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210710094846_AddedAllProp")]
+    partial class AddedAllProp
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

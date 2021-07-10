@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using LINQ.Common.DTOModels;
-using System.Threading.Tasks;
+using LINQ.DataAccess.Models;
 
 namespace LINQ.BL.MappingSettings
 {

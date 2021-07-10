@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using LINQ.Common.DTOModels;
+using LINQ.Common.DTOModels.UsersDTO;
 using LINQ.DataAccess;
 using LINQ.DataAccess.Models;
 using Microsoft.EntityFrameworkCore;
@@ -31,18 +32,22 @@ namespace LINQ.BL.Services
         {
             var User = _mapper.Map<User>(UserDTO);
             if (IsExistElementById(UserDTO.Id))
-                throw new System.InvalidOperationException("toject with this id is already exist");
+                throw new System.InvalidOperationException("user with this id is already exist");
             _context.Users.Add(User);
             await _context.SaveChangesAsync();
         }
 
-        public async System.Threading.Tasks.Task Update(UserDTO newtoject, int id)
+        public async System.Threading.Tasks.Task Update(UpdatedUserDTO updateUser, int id)
         {
-            var User = _mapper.Map<User>(newtoject);
             if (!IsExistElementById(id))
-                throw new System.InvalidOperationException("toject with this id is already exist");
+                throw new System.InvalidOperationException("Can`t find element with this id");
+
             var update = _context.Users.First(t => t.Id == id);
-            update = User;
+            if (updateUser.NewName != null)
+                update.Name = updateUser.NewName;
+            if (updateUser.NewTeamiD != null)
+                update.TeamId = updateUser.NewTeamiD;
+
             _context.Users.Update(update);
             await _context.SaveChangesAsync();
         }
@@ -50,7 +55,7 @@ namespace LINQ.BL.Services
         public async System.Threading.Tasks.Task Delete(int id)
         {
             if (!IsExistElementById(id))
-                throw new System.InvalidOperationException("Can`t find toject with this id");
+                throw new System.InvalidOperationException("Can`t find user with this id");
             var deleted = _context.Users.First(t => t.Id == id);
             _context.Users.Remove(deleted);
             await _context.SaveChangesAsync();

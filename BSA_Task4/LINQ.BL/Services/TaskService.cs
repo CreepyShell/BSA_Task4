@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using LINQ.Common.DTOModels;
+using LINQ.Common.DTOModels.TasksDTO;
 using LINQ.DataAccess;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -24,7 +26,7 @@ namespace LINQ.BL.Services
         public async Task<TaskDTO> ReadById(int id)
         {
             if (!IsExistElementById(id))
-                throw new System.InvalidOperationException("Can`t find element with this id");
+                throw new InvalidOperationException("Can`t find element with this id");
             return _mapper.Map<TaskDTO>(await _context.Tasks.FirstAsync(t => t.Id == id));
         }
 
@@ -32,18 +34,32 @@ namespace LINQ.BL.Services
         {
             var task = _mapper.Map<TaskModel>(TaskDTO);
             if (IsExistElementById(TaskDTO.Id))
-                throw new System.InvalidOperationException("toject with this id is already exist");
+                throw new InvalidOperationException("toject with this id is already exist");
             _context.Tasks.Add(task);
             await _context.SaveChangesAsync();
         }
 
-        public async Task Update(TaskDTO newtoject, int id)
+        public async Task<IEnumerable<TaskDTO>> GetUnexecutedTasks(int userId)
         {
-            var task = _mapper.Map<TaskModel>(newtoject);
+            if (await _context.Users.FirstOrDefaultAsync(u => u.Id == userId) == null)
+                throw new InvalidOperationException("can`t find user with this id");
+            var rezult = await _context.Tasks.Where(task => task.PerformerId == userId && task.FinishedAt == null).ToListAsync();
+            return _mapper.Map<List<TaskDTO>>(rezult);
+        }
+
+        public async Task Update(UpdatedTaskDTO newTask, int id)
+        {
             if (!IsExistElementById(id))
                 throw new System.InvalidOperationException("toject with this id is already exist");
+
             var update = _context.Tasks.First(t => t.Id == id);
-            update = task;
+            if (newTask.NewPerformerId != null)
+                update.PerformerId = newTask.NewPerformerId.Value;
+            if (newTask.NewState != null)
+                update.State = newTask.NewState.Value;
+            if (newTask.NewDescription != null)
+                update.Description = newTask.NewDescription;
+
             _context.Tasks.Update(update);
             await _context.SaveChangesAsync();
         }

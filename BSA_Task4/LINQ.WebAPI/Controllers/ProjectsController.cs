@@ -14,7 +14,7 @@ namespace LINQ.WebAPI.Controllers
     [ApiController]
     public class ProjectsController : ControllerBase
     {
-        private ProjectService _service;
+        readonly private ProjectService _service;
         public ProjectsController(ProjectService service)
         {
             _service = service;
@@ -54,7 +54,7 @@ namespace LINQ.WebAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, [FromBody] ProjectDTO newProject)
+        public async Task<IActionResult> Put(int id, [FromBody] UpdatedProjectDTO newProject)
         {
             try
             {

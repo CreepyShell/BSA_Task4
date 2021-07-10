@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using LINQ.DataAccess;
-using System.Linq;
+using System;
 
 namespace LINQ.BL.Services
 {
-    public abstract class BaseService
+    public abstract class BaseService : IDisposable
     {
         protected LINQDbContext _context;
         protected IMapper _mapper;
@@ -12,6 +12,11 @@ namespace LINQ.BL.Services
         {
             _context = context;
             _mapper = mapper;
+        }
+
+        public void Dispose()
+        {
+            _context.Dispose();
         }
     }
 }

@@ -13,6 +13,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LINQ.BL", "LINQ.BL\LINQ.BL.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BSA_Task1", "BSA_Task1\BSA_Task1.csproj", "{CDA3A39E-3CAB-4AD9-8B4D-C5990E614C83}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LINQ.BL.Tests", "LINQ.BL.Tests\LINQ.BL.Tests.csproj", "{C2167BF3-BF44-44B6-AD09-8C3217761F70}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LINQ.WebAPI.IntegrationTest", "LINQ.WebAPI.IntegrationTest\LINQ.WebAPI.IntegrationTest.csproj", "{1F0BBE3E-8B6C-4038-9BC3-A87E2FF214F9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{CDA3A39E-3CAB-4AD9-8B4D-C5990E614C83}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CDA3A39E-3CAB-4AD9-8B4D-C5990E614C83}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CDA3A39E-3CAB-4AD9-8B4D-C5990E614C83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2167BF3-BF44-44B6-AD09-8C3217761F70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2167BF3-BF44-44B6-AD09-8C3217761F70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2167BF3-BF44-44B6-AD09-8C3217761F70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2167BF3-BF44-44B6-AD09-8C3217761F70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F0BBE3E-8B6C-4038-9BC3-A87E2FF214F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F0BBE3E-8B6C-4038-9BC3-A87E2FF214F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F0BBE3E-8B6C-4038-9BC3-A87E2FF214F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F0BBE3E-8B6C-4038-9BC3-A87E2FF214F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

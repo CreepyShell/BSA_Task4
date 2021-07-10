@@ -28,9 +28,9 @@ namespace LINQ.DataAccess
                 .OnDelete(DeleteBehavior.Cascade);
 
 
-            builder.Entity<Project>().Ignore(pr => pr.Deadline).Ignore(pr => pr.Description).Ignore(pr => pr.Deadline);
-            builder.Entity<Task>().Ignore(t => t.Description).Ignore(t => t.State).Ignore(t => t.FinishedAt);
-            builder.Entity<User>().Ignore(u => u.BirthDay).Ignore(u => u.Email);
+            //builder.Entity<Project>().Ignore(pr => pr.Deadline).Ignore(pr => pr.Description).Ignore(pr => pr.Deadline);
+            //builder.Entity<Task>().Ignore(t => t.Description).Ignore(t => t.State).Ignore(t => t.FinishedAt);
+            //builder.Entity<User>().Ignore(u => u.BirthDay).Ignore(u => u.Email);
 
             List<Team> teams = new List<Team>()
             {
