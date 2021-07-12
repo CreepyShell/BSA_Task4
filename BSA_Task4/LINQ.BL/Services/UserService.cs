@@ -5,7 +5,6 @@ using LINQ.DataAccess;
 using LINQ.DataAccess.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace LINQ.BL.Services
@@ -23,7 +22,7 @@ namespace LINQ.BL.Services
 
         public async Task<UserDTO> ReadById(int id)
         {
-            if (!IsExistElementById(id))
+            if (!await IsExistElementById(id))
                 throw new System.InvalidOperationException("Can`t find element with this id");
             return _mapper.Map<UserDTO>(await _context.Users.FirstAsync(t => t.Id == id));
         }
@@ -31,7 +30,7 @@ namespace LINQ.BL.Services
         public async System.Threading.Tasks.Task Create(UserDTO UserDTO)
         {
             var User = _mapper.Map<User>(UserDTO);
-            if (IsExistElementById(UserDTO.Id))
+            if (await IsExistElementById(UserDTO.Id))
                 throw new System.InvalidOperationException("user with this id is already exist");
             _context.Users.Add(User);
             await _context.SaveChangesAsync();
@@ -39,10 +38,9 @@ namespace LINQ.BL.Services
 
         public async System.Threading.Tasks.Task Update(UpdatedUserDTO updateUser, int id)
         {
-            if (!IsExistElementById(id))
+            if (!await IsExistElementById(id))
                 throw new System.InvalidOperationException("Can`t find element with this id");
-
-            var update = _context.Users.First(t => t.Id == id);
+            var update = await _context.Users.FirstAsync(t => t.Id == id);
             if (updateUser.NewName != null)
                 update.Name = updateUser.NewName;
             if (updateUser.NewTeamiD != null)
@@ -54,13 +52,13 @@ namespace LINQ.BL.Services
 
         public async System.Threading.Tasks.Task Delete(int id)
         {
-            if (!IsExistElementById(id))
+            if (!await IsExistElementById(id))
                 throw new System.InvalidOperationException("Can`t find user with this id");
-            var deleted = _context.Users.First(t => t.Id == id);
+            var deleted = await _context.Users.FirstAsync(t => t.Id == id);
             _context.Users.Remove(deleted);
             await _context.SaveChangesAsync();
         }
 
-        private bool IsExistElementById(int id) => _context.Users.Any(t => t.Id == id);
+        private async Task<bool> IsExistElementById(int id) => await _context.Users.AnyAsync(t => t.Id == id);
     }
 }

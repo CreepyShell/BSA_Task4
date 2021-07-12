@@ -25,7 +25,7 @@ namespace LINQ.BL.Services
 
         public async Task<TaskDTO> ReadById(int id)
         {
-            if (!IsExistElementById(id))
+            if (!await IsExistElementById(id))
                 throw new InvalidOperationException("Can`t find element with this id");
             return _mapper.Map<TaskDTO>(await _context.Tasks.FirstAsync(t => t.Id == id));
         }
@@ -33,7 +33,7 @@ namespace LINQ.BL.Services
         public async Task Create(TaskDTO TaskDTO)
         {
             var task = _mapper.Map<TaskModel>(TaskDTO);
-            if (IsExistElementById(TaskDTO.Id))
+            if (await IsExistElementById(TaskDTO.Id))
                 throw new InvalidOperationException("toject with this id is already exist");
             _context.Tasks.Add(task);
             await _context.SaveChangesAsync();
@@ -49,14 +49,18 @@ namespace LINQ.BL.Services
 
         public async Task Update(UpdatedTaskDTO newTask, int id)
         {
-            if (!IsExistElementById(id))
-                throw new System.InvalidOperationException("toject with this id is already exist");
+            if (!await IsExistElementById(id))
+                throw new InvalidOperationException("toject with this id is already exist");
 
-            var update = _context.Tasks.First(t => t.Id == id);
+            var update = await _context.Tasks.FirstAsync(t => t.Id == id);
             if (newTask.NewPerformerId != null)
                 update.PerformerId = newTask.NewPerformerId.Value;
             if (newTask.NewState != null)
+            {
                 update.State = newTask.NewState.Value;
+                if (newTask.NewState == 3)
+                    update.FinishedAt = DateTime.Now;
+            }
             if (newTask.NewDescription != null)
                 update.Description = newTask.NewDescription;
 
@@ -66,13 +70,13 @@ namespace LINQ.BL.Services
 
         public async Task Delete(int id)
         {
-            if (!IsExistElementById(id))
-                throw new System.InvalidOperationException("Can`t find toject with this id");
-            var deleted = _context.Tasks.First(t => t.Id == id);
+            if (!await IsExistElementById(id))
+                throw new InvalidOperationException("Can`t find toject with this id");
+            var deleted = await _context.Tasks.FirstAsync(t => t.Id == id);
             _context.Tasks.Remove(deleted);
             await _context.SaveChangesAsync();
         }
 
-        private bool IsExistElementById(int id) => _context.Tasks.Any(t => t.Id == id);
+        private async Task<bool> IsExistElementById(int id) => await _context.Tasks.AnyAsync(t => t.Id == id);
     }
 }

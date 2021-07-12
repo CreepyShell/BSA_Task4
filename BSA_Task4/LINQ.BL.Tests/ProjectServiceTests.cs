@@ -14,7 +14,7 @@ namespace LINQ.BL.Tests
     {
         readonly ProjectService _projectService;
         readonly IMapper mapper;
-        readonly DataAccess.LINQDbContext dbContext;
+        readonly DataAccess.LINQDbContext _dbContext;
 
 
         public ProjectServiceTests()
@@ -25,9 +25,9 @@ namespace LINQ.BL.Tests
                 .UseInMemoryDatabase("Test database")
                 .Options;
 
-            dbContext = new DataAccess.LINQDbContext(options);
+            _dbContext = new DataAccess.LINQDbContext(options);
 
-            _projectService = new ProjectService(mapper, dbContext);
+            _projectService = new ProjectService(mapper, _dbContext);
         }
 
         [Fact]
@@ -49,8 +49,8 @@ namespace LINQ.BL.Tests
 
             Assert.NotEmpty(_projectService.Read().Result);
 
-            dbContext.Projects.RemoveRange(dbContext.Projects);
-            await dbContext.SaveChangesAsync();
+            _dbContext.Projects.RemoveRange(_dbContext.Projects);
+            await _dbContext.SaveChangesAsync();
         }
 
         [Fact]
@@ -61,8 +61,8 @@ namespace LINQ.BL.Tests
             await _projectService.Create(project);
 
             await Assert.ThrowsAsync<InvalidOperationException>(() => _projectService.Delete(_projectService.Read().Result.First().Id - 1));
-            dbContext.Projects.RemoveRange(dbContext.Projects);
-            await dbContext.SaveChangesAsync();
+            _dbContext.Projects.RemoveRange(_dbContext.Projects);
+            await _dbContext.SaveChangesAsync();
         }
         [Fact]
         public async Task UpdateProject()
@@ -77,8 +77,8 @@ namespace LINQ.BL.Tests
 
             Assert.Equal(newDescr, _projectService.Read().Result.First().Description);
 
-            dbContext.Projects.RemoveRange(dbContext.Projects);
-            await dbContext.SaveChangesAsync();
+            _dbContext.Projects.RemoveRange(_dbContext.Projects);
+            await _dbContext.SaveChangesAsync();
         }
 
         [Fact]
@@ -90,13 +90,13 @@ namespace LINQ.BL.Tests
 
             await Assert.ThrowsAsync<InvalidOperationException>(() => _projectService.ReadById(_projectService.Read().Result.FirstOrDefault().Id - 1));
 
-            dbContext.Projects.RemoveRange(dbContext.Projects);
-            await dbContext.SaveChangesAsync();
+            _dbContext.Projects.RemoveRange(_dbContext.Projects);
+            await _dbContext.SaveChangesAsync();
         }
 
         public void Dispose()
         {
-            dbContext?.Dispose();
+            _dbContext?.Dispose();
             _projectService?.Dispose();
         }
 

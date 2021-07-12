@@ -23,7 +23,7 @@ namespace LINQ.BL.Services
 
         public async Task<TeamDTO> ReadById(int id)
         {
-            if (!IsExistElementById(id))
+            if (!await IsExistElementById(id))
                 throw new System.InvalidOperationException("Can`t find element with this id");
             return _mapper.Map<TeamDTO>(await _context.Teams.FirstAsync(t => t.Id == id));
         }
@@ -31,7 +31,7 @@ namespace LINQ.BL.Services
         public async System.Threading.Tasks.Task Create(TeamDTO TeamDTO)
         {
             var Team = _mapper.Map<Team>(TeamDTO);
-            if (IsExistElementById(TeamDTO.Id))
+            if (await IsExistElementById(TeamDTO.Id))
                 throw new System.InvalidOperationException("toject with this id is already exist");
             _context.Teams.Add(Team);
             await _context.SaveChangesAsync();
@@ -39,10 +39,10 @@ namespace LINQ.BL.Services
 
         public async System.Threading.Tasks.Task Update(UpdatedTeamDTO newTeam, int id)
         {
-            if (!IsExistElementById(id))
+            if (!await IsExistElementById(id))
                 throw new System.InvalidOperationException("user with this id don`t exist");
 
-            var update = _context.Teams.First(t => t.Id == id);
+            var update =await _context.Teams.FirstAsync(t => t.Id == id);
             if(newTeam.NewName!=null)
                 update.Name = newTeam.NewName;
 
@@ -53,13 +53,13 @@ namespace LINQ.BL.Services
 
         public async System.Threading.Tasks.Task Delete(int id)
         {
-            if (!IsExistElementById(id))
+            if (!await IsExistElementById(id))
                 throw new System.InvalidOperationException("Can`t find toject with this id");
-            var deleted = _context.Teams.First(t => t.Id == id);
+            var deleted = await _context.Teams.FirstAsync(t => t.Id == id);
             _context.Teams.Remove(deleted);
             await _context.SaveChangesAsync();
         }
 
-        private bool IsExistElementById(int id) => _context.Teams.Any(t => t.Id == id);
+        private async Task<bool> IsExistElementById(int id) =>await _context.Teams.AnyAsync(t => t.Id == id);
     }
 }

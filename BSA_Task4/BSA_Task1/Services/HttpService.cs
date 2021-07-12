@@ -1,25 +1,32 @@
-﻿using System.Net.Http;
+﻿using System;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace BSA_Task1.Services
 {
-    public class HttpService
+    public class HttpService : IDisposable
     {
         private HttpClient client = new HttpClient();
 
-        public HttpResponseMessage GetProjects() =>
-            client.GetAsync("https://localhost:5001/api/Projects")
-            .Result;
+        public void Dispose()
+        {
+            client?.Dispose();
+        }
 
-        public HttpResponseMessage GetTasks() =>
-            client.GetAsync("https://localhost:5001/api/Tasks")
-            .Result;
+        public async Task<HttpResponseMessage> GetProjects() =>
+            await client.GetAsync("https://localhost:5001/api/Projects");
 
-        public HttpResponseMessage GetTeams() =>
-            client.GetAsync("https://localhost:5001/api/Teams")
-            .Result;
+        public async Task<HttpResponseMessage> GetTasks() =>
+            await client.GetAsync("https://localhost:5001/api/Tasks");
 
-        public HttpResponseMessage GetUsers() =>
-            client.GetAsync("https://localhost:5001/api/Users")
-            .Result;
+        public async Task<HttpResponseMessage> GetTeams() =>
+            await client.GetAsync("https://localhost:5001/api/Teams");
+
+        public async Task<HttpResponseMessage> UpdateTaskState(int id) =>
+            await client.PutAsync($"https://localhost:5001/api/Tasks/{id}", new StringContent("{" + $"\"NewState\":{3}" + "}", Encoding.UTF8, "application/json"));
+
+        public async Task<HttpResponseMessage> GetUsers() =>
+            await client.GetAsync("https://localhost:5001/api/Users");
     }
 }
